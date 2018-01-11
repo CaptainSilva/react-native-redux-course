@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import reducers from './reducers';
 import { Header } from './components/common/Header';
+import LibraryList from './components/common/LibraryList';
 
 export default class App extends Component<{}> {
   render() {
@@ -19,6 +20,7 @@ export default class App extends Component<{}> {
       <Provider store={createStore(reducers)}>
       <View>
         <Header headerText="Redux Course" />
+        <LibraryList />
       </View>
       </Provider>
     );
