@@ -20,12 +20,12 @@ import Router from './Router';
 export default class App extends Component {
   componentWillMount() {
     const config = {
-      apiKey: 'AIzaSyDT6oqnA3PyIsWm8JL5tqhaTtyWFdlbpQ8',
-      authDomain: 'projecttemplate-546a8.firebaseapp.com',
-      databaseURL: 'https://projecttemplate-546a8.firebaseio.com',
-      projectId: 'projecttemplate-546a8',
-      storageBucket: 'projecttemplate-546a8.appspot.com',
-      messagingSenderId: '285466189119'
+      apiKey: 'AIzaSyCdAPSPT6UsDGTew62k4KQbR3-H577Pg6U',
+      authDomain: 'reduxcourse-56c6b.firebaseapp.com',
+      databaseURL: 'https://reduxcourse-56c6b.firebaseio.com',
+      projectId: 'reduxcourse-56c6b',
+      storageBucket: 'reduxcourse-56c6b.appspot.com',
+      messagingSenderId: '575106612073'
     };
     firebase.initializeApp(config);
   }
