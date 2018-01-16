@@ -10,5 +10,5 @@ export default combineReducers({
   selectedLibraryId: SelectionReducer,
   auth: AuthReducer,
   employeeForm: EmployeeFormReducer,
-  employee: EmployeeReducer,
+  employees: EmployeeReducer,
 });

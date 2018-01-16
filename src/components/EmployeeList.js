@@ -7,16 +7,19 @@ import { employeesFetch } from '../actions';
 
 class EmployeeList extends Component {
   componentWillMount() {
+    console.log('WillMount');
     this.props.employeesFetch();
 
     this.createDataSource(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('nextProps: ', nextProps);
     this.createDataSource(nextProps);
   }
 
   createDataSource({ employees }) {
+    console.log('createDataSource: ', employees);
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
@@ -24,10 +27,12 @@ class EmployeeList extends Component {
   }
 
   renderRow(employee) {
+    console.log('renderRow: ');
     return <ListItem employee={employee} />;
   }
 
   render() {
+    console.log('ListDs: ', this.dataSource);
     return (
      <ListView
      enableEmptySections
@@ -40,6 +45,7 @@ class EmployeeList extends Component {
 
 const mapStateToProps = state => {
   const employees = _.map(state.employees, (val, uid) => {
+    console.log('mapStateToProps: ', val, uid);
     return { ...val, uid };
   });
 
