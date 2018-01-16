@@ -4,7 +4,7 @@ import {
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
   EMPLOYEES_FETCH_SUCCESS,
-  EMPLOYEE_SAVE_SUCCESS, 
+  EMPLOYEE_SAVE_SUCCESS,
 } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -22,7 +22,9 @@ export const employeeCreate = ({ name, phone, shift }) => {
     .push({ name, phone, shift })
     .then(
       dispatch({ type: EMPLOYEE_CREATE }),
-      () => Actions.pop()
+      () =>
+      // Actions.pop()
+      Actions.employeeList({ type: 'reset' })
     );
   };
 };
@@ -46,7 +48,21 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
     .set({ name, phone, shift })
     .then(() => {
       dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
-      Actions.pop();
+      Actions.employeeList({ type: 'reset' });
+      // Actions.pop();
     });
+  };
+};
+
+export const employeeDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+      firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .remove()
+      .then(() => {
+        Actions.employeeList({ type: 'reset' });
+        // Actions.pop();
+      });
   };
 };
